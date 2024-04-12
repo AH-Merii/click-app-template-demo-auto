@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=69", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "click-app-template-demo-auto"
+dynamic = ["version"]
+description = "Demonstrating https://github.com/AH-Merii/click-app"
+readme = "README.md"
+authors = [{name = "AbdulHamid Merii"}]
+license = {text = "Apache-2.0"}
+requires-python = ">=3.8"
+classifiers = [
+    "License :: OSI Approved :: Apache Software License"
+]
+dependencies = [
+    "click"
+]
+
+[project.urls]
+Homepage = "https://github.com/AH-Merii/click-app-template-demo-auto"
+Changelog = "https://github.com/AH-Merii/click-app-template-demo-auto/releases"
+Issues = "https://github.com/AH-Merii/click-app-template-demo-auto/issues"
+CI = "https://github.com/AH-Merii/click-app-template-demo-auto/actions"
+
+[project.entry-points.console_scripts]
+click-app-template-demo-auto = "click_app_template_demo_auto.cli:cli"
+
+[project.optional-dependencies]
+test = ["isort", "black", "flake8", "ruff", "pytest", "pytest-cov"]
+dev = ["pip-tools"]
+release = ["python-semantic-release==9.4.0", "build", "setuptools-scm[toml]"]
+
+[tool.setuptools]
+packages = ["click_app_template_demo_auto"]
+
+[tool.setuptools_scm]
+fallback_version = "0.0.1"
+local_scheme = "no-local-version"
+version_file = "click_app_template_demo_auto/_version.py"
+
+[tool.semantic_release]
+version_variable = ["click_app_template_demo_auto/_version.py"]
+upload_to_pypi = false
+patch_without_tag = true
+major_on_zero = true
+minor_on_no_changes = true
+branch = "main"
+
+[tool.flake8]
+max-line-length = 120
+exclude = [".venv"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.black]
+exclude = "click_app_template_demo_auto/_version.py"
+line-length = 120
+
